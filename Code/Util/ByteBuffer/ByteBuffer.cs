@@ -526,7 +526,7 @@ namespace L2_login
 
         public byte GetByte(int ind)
         {
-            if (_length >= ind)
+            if ((ind >= 0) && (ind < _length))
             {
                 return _data[ind];
             }
@@ -536,7 +536,7 @@ namespace L2_login
 
         public void SetByte(int ind, byte b)
         {
-            if (_length >= ind)
+            if ((ind >= 0) && (ind < _length))
             {
                 _data[ind] = b;
             }

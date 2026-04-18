@@ -479,6 +479,7 @@
                 catch (System.Exception e)
                 {
                     //Globals.l2net_home.Add_Error("Packet Error: " + last_p + " Previous Packet: " + last_p2 + " : " + e.Message);
+                    DiagnosticLogger.LogException(e, "Packet Error: " + last_p);
                     Globals.l2net_home.Add_Error("Packet Error: " + last_p + " :: " + e.Message);
                 }
             }//end of loop to handle queue data

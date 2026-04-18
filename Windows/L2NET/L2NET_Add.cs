@@ -4,6 +4,36 @@ namespace L2_login
 {
     public partial class L2NET
     {
+        private static int ToProgressValue(float current, float max)
+        {
+            if ((max <= 0) || float.IsNaN(current) || float.IsNaN(max) || float.IsInfinity(current) || float.IsInfinity(max))
+            {
+                return 0;
+            }
+
+            return ToProgressValue(current / max);
+        }
+
+        private static int ToProgressValue(float fraction)
+        {
+            if (float.IsNaN(fraction) || float.IsInfinity(fraction))
+            {
+                return 0;
+            }
+
+            float percent = fraction * 100;
+            if (percent < 0)
+            {
+                return 0;
+            }
+            if (percent > 100)
+            {
+                return 100;
+            }
+
+            return Convert.ToInt32(percent);
+        }
+
         delegate void DeadButtons_Callback(uint town, uint clanhall, uint castle, uint siege, uint fort);
         public void DeadButtons(uint town, uint clanhall, uint castle, uint siege, uint fort)
         {
@@ -694,7 +724,7 @@ namespace L2_login
             label_char_hp.Text = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             try
             {
-                progressBar_char_HP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_HP / Globals.gamedata.my_char.Max_HP * 100);
+                progressBar_char_HP.Value = ToProgressValue(Globals.gamedata.my_char.Cur_HP, Globals.gamedata.my_char.Max_HP);
                 progressBar_char_HP.BarText = Globals.gamedata.my_char.Cur_HP.ToString() + "/" + Globals.gamedata.my_char.Max_HP.ToString();
             }
             catch
@@ -704,7 +734,7 @@ namespace L2_login
             label_char_mp.Text = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             try
             {
-                progressBar_char_MP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_MP / Globals.gamedata.my_char.Max_MP * 100);
+                progressBar_char_MP.Value = ToProgressValue(Globals.gamedata.my_char.Cur_MP, Globals.gamedata.my_char.Max_MP);
                 progressBar_char_MP.BarText = Globals.gamedata.my_char.Cur_MP.ToString() + "/" + Globals.gamedata.my_char.Max_MP.ToString();
             }
             catch
@@ -714,7 +744,7 @@ namespace L2_login
             label_char_cp.Text = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             try
             {
-                progressBar_char_CP.Value = Convert.ToInt32(Globals.gamedata.my_char.Cur_CP / Globals.gamedata.my_char.Max_CP * 100);
+                progressBar_char_CP.Value = ToProgressValue(Globals.gamedata.my_char.Cur_CP, Globals.gamedata.my_char.Max_CP);
                 progressBar_char_CP.BarText = Globals.gamedata.my_char.Cur_CP.ToString() + "/" + Globals.gamedata.my_char.Max_CP.ToString();
             }
             catch
@@ -732,7 +762,7 @@ namespace L2_login
             {
                 if (Globals.gamedata.Chron >= Chronicle.CT2_6)
                 {
-                    progressBar_char_XP.Value = Convert.ToInt32(Globals.gamedata.my_char.XPPercent * 100); //AddInfo.Get_XP_Percent_Int();
+                    progressBar_char_XP.Value = ToProgressValue(Globals.gamedata.my_char.XPPercent); //AddInfo.Get_XP_Percent_Int();
                     progressBar_char_XP.BarText = Globals.gamedata.my_char.XPPercent.ToString("P", System.Globalization.CultureInfo.InvariantCulture); //AddInfo.Get_XP_Percent();
                 }
                 else

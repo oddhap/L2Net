@@ -11,6 +11,8 @@ namespace L2_login
         [STAThread]
         static void Main(string[] args)
         {
+            DiagnosticLogger.Initialize();
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.DoEvents();

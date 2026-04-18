@@ -74,6 +74,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -146,6 +147,7 @@
       <DependentUpon>ScriptWindow_HTML.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Util\Cleverbot.cs" />
+    <Compile Include="Code\Util\DiagnosticLogger.cs" />
     <Compile Include="Code\Util\Pathing\Astar.cs" />
     <Compile Include="Code\Util\Pathing\AstarNode.cs" />
     <Compile Include="Code\Util\Pathing\PathManager.cs" />
