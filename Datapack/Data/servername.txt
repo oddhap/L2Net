@@ -1,0 +1,128 @@
+396
+0|Bartz
+1|Sieghardt
+2|Kain
+3|Lionna
+4|Erica
+5|Gustin
+6|Devianne
+7|Hindemith
+8|Teon (EURO)
+9|Franz (EURO)
+10|Luna (EURO)
+11|Sayha
+12|Aria
+13|Phoenix
+14|Chronos (GMT-2)
+15|Naia (GMT+1)
+16|Shilen (GMT+0)
+17|Magmeld (GMT-2)
+18|Bartz (GMT-5)
+19|Balok
+20|Frikios
+21|Ophylia
+22|Shakdun
+23|Tarziph
+24|Aria
+25|Esenn
+26|Elcardia
+27|Yiana
+28|Seresin
+29|Tarkai
+30|Khadia
+31|Roien
+32|Kallint (Non-PvP)
+33|Baium
+34|Kamael
+35|Beleth
+36|Anakim
+37|Lilith
+38|Thifiel
+39|Lithra
+40|Lockirin
+41|Kakai
+42|Cadmus
+43|Athebaldt
+44|Blackbird
+45|Ramsheart
+46|Esthus
+47|Vasper
+48|Lancer
+49|Ashton
+50|Waytrel
+51|Waltner
+52|Tahnford
+53|Hunter
+54|Dewell
+55|Rodemaye
+56|Ken Rauhel
+57|Ken Abigail
+58|Ken Orwen
+59|Van Holter
+60|Desperion
+61|Einhovant
+62|Shunaiman
+63|Faris
+64|Tor
+65|Carneiar
+66|Dwyllios
+67|Baium
+68|Hallate
+69|Zaken
+70|Core
+71|72번 서버
+72|73번 서버
+73|74번 서버
+74|75번 서버
+75|76번 서버
+76|77번 서버
+77|78번 서버
+78|79번 서버
+79|80번 서버
+80|81번 서버
+81|82번 서버
+82|83번 서버
+83|84번 서버
+84|85번 서버
+85|86번 서버
+86|87번 서버
+87|88번 서버
+88|89번 서버
+89|90번 서버
+90|91번 서버
+91|92번 서버
+92|93번 서버
+93|94번 서버
+94|95번 서버
+95|96번 서버
+96|97번 서버
+97|98번 서버
+98|99번 서버
+99|100번 서버
+100|101번 서버
+101|102번 서버
+102|103번 서버
+103|104번 서버
+104|105번 서버
+105|106번 서버
+106|107번 서버
+107|108번 서버
+108|109번 서버
+109|110번 서버
+110|111번 서버
+111|112번 서버
+112|113번 서버
+113|114번 서버
+114|115번 서버
+115|116번 서버
+116|117번 서버
+117|118번 서버
+118|119번 서버
+119|120번 서버
+120|121번 서버
+121|122번 서버
+122|123번 서버
+123|124번 서버
+124|125번 서버
+125|126번 서버
+126|방송용

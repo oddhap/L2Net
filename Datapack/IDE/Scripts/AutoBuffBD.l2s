@@ -1,0 +1,143 @@
+SET_EVENT "<&SCRIPTEVENT_CHAT&>" "<&SYSTEM_CURRENTFILE&>" RecieveChat
+
+DEFINE_GLOBAL STRING Name
+DEFINE_GLOBAL STRING Type
+DEFINE_GLOBAL STRING Trigger ".dance"
+DEFINE_GLOBAL STRING TypeCheck
+
+DEFINE_GLOBAL STRING 1 "Handyman"
+DEFINE_GLOBAL STRING 2 "Nic0"
+DEFINE_GLOBAL STRING 3 "LesPaul"
+DEFINE_GLOBAL STRING 4 "OSNAP"
+DEFINE_GLOBAL STRING 5 "Pascal"
+DEFINE_GLOBAL STRING 6 "JavaScript"
+
+DEFINE_GLOBAL STRING Mystic "Mystic"
+DEFINE_GLOBAL STRING Fighter "Fighter"
+DEFINE_GLOBAL STRING PlayerName
+
+DO
+	SLEEP 1000
+
+LOOP ONE == ONE
+END_SCRIPT
+
+
+FUNCTION RecieveChat
+
+      IF MESSAGETYPE == TWO
+	PRINT_TEXT "<&MESSAGETYPE&>"
+	PRINT_TEXT "<&MESSAGE&>"
+
+	IF "MESSAGE.CONTAINS #$<&Trigger&>" == TRUE
+
+	          Name = SENDERNAME
+	          CALL GetClass TypeCheck 1 Name
+	          COMMAND "/target <&Name&>"
+
+	          IF TypeCheck == Mystic
+		CALL BuffMystic 1 Name
+	          ELSE
+	          	IF TypeCheck == Fighter
+		        CALL BuffFighter 1 Name
+		ENDIF
+	          ENDIF
+
+	ENDIF     
+	
+      ENDIF
+	
+RETURN VOID
+
+FUNCTION GetClass 1 PMName
+
+     SWITCH PMName
+	CASE 1
+	           Type = "<&Mystic&>"
+	           BREAK 1
+
+	CASE 2
+	           Type = "<&Mystic&>"
+	           BREAK 1
+
+	CASE 3
+	           Type = "<&Mystic&>"
+	           BREAK 1
+
+	CASE 4
+	           Type = "<&Fighter&>"
+	           BREAK 1
+
+	CASE 5
+	           Type = "<&Fighter&>"
+	           BREAK 1
+
+	CASE 6
+	           Type = "<&Mystic&>"
+	           BREAK 1
+
+	DEFAULT
+	           Type = $"Target not defined in list."
+	           BREAK 1
+
+      ENDSWITCH
+
+RETURN Type
+
+
+FUNCTION BuffFighter 1 PlayerName
+   
+    COMMAND "/target <&PlayerName&>"
+    SLEEP 500
+
+    USE_ITEM 3949
+    USE_SKILL 1035 	//Mental Shield
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1068 	//Might
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1077 	//Focus
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1086 	//Haste
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1240 	//Guidance
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1242 	//Death Whisper
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1388 	//Greater Might
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1045 	//BTB
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1040 	//Shield
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1036 	//Magic Barrier
+    SLEEP 2500
+    USE_ITEM 3949
+    USE_SKILL 1204 	//Windwalk
+
+RETURN VOID
+
+FUNCTION BuffMystic 1 PlayerName
+
+    COMMAND "/target <&PlayerName&>"
+    SLEEP 500
+
+    
+    USE_SKILL 276	//Dance of Concentration
+    SLEEP 2500
+    
+    USE_SKILL 273	//Dance of The Mystic
+    SLEEP 2500
+
+RETURN VOID
+
+
+

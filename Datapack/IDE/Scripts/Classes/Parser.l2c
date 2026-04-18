@@ -1,0 +1,107 @@
+CLASS Parser NULL
+
+VAR_START
+
+PRIVATE INT Temp 0
+PRIVATE INT Long 0
+PRIVATE STRING Str ""
+PRIVATE INT Spin 0
+PRIVATE INT Aux 0
+
+PRIVATE INT Time 0
+PRIVATE INT Hours 0
+PRIVATE INT Minutes 0
+PRIVATE INT Seconds 0
+PRIVATE STRING FinalTime ""
+
+PRIVATE INT Dly 0
+
+VAR_END
+
+PUBLIC ParseString 3 Msg Sep Array
+    THIS.Aux = ZERO
+    THIS.Spin = ZERO
+    THIS.Long  = Msg.LENGTH
+    
+    DO
+        THIS.Str = Msg.SUBSTRING THIS.Spin ONE
+        
+        IF THIS.Str == Sep
+            THIS.Temp = THIS.Spin - THIS.Aux
+            Array.ADD "#$<&Msg.SUBSTRING THIS.Aux THIS.Temp&>"
+            THIS.Aux = THIS.Spin + ONE
+        ENDIF
+        THIS.Spin = THIS.Spin + ONE
+    LOOP THIS.Spin < THIS.Long
+    THIS.Temp = THIS.Spin - THIS.Aux
+    Array.ADD "#$<&Msg.SUBSTRING THIS.Aux THIS.Temp&>"
+    
+    
+RETURN VOID
+
+PUBLIC GetTime 0
+
+    GET_TIME THIS.Time
+    THIS.Aux = THIS.Time / TICKS_PER_D
+    THIS.Aux = THIS.Aux * TICKS_PER_D
+    THIS.Time = THIS.Time - THIS.Aux
+    //Get Hours
+    THIS.Hours = THIS.Time / TICKS_PER_H
+    THIS.Aux = THIS.Hours * TICKS_PER_H
+    THIS.Time = THIS.Time - THIS.Aux
+    //Get Minutes
+    THIS.Minutes = THIS.Time / TICKS_PER_M
+    THIS.Aux = THIS.Minutes * TICKS_PER_M
+    THIS.Time = THIS.Time - THIS.Aux
+    //Get Seconds
+    THIS.Seconds = THIS.Time / TICKS_PER_S
+    
+    IF THIS.Hours < #i10
+        THIS.FinalTime = "#$0<&THIS.Hours&>"
+    ELSE
+        THIS.FinalTime = "#$<&THIS.Hours&>"
+    ENDIF
+    IF THIS.Minutes < #i10
+        THIS.FinalTime = "#$<&THIS.FinalTime&>:0<&THIS.Minutes&>"
+    ELSE
+        THIS.FinalTime = "#$<&THIS.FinalTime&>:<&THIS.Minutes&>"
+    ENDIF
+    IF THIS.Seconds < #i10
+        THIS.FinalTime = "#$<&THIS.FinalTime&>:0<&THIS.Seconds&>"
+    ELSE
+        THIS.FinalTime = "#$<&THIS.FinalTime&>:<&THIS.Seconds&>"
+    ENDIF
+    
+RETURN THIS.FinalTime
+
+PUBLIC GetDelay 2 StartTime EndTime
+
+    // Parsing Hours to seconds.
+    THIS.Hours = EndTime.ZERO - StartTime.ZERO 
+    // Minutes
+    THIS.Hours = THIS.Hours * #i60 
+    // Seconds
+    THIS.Hours = THIS.Hours * #i60 
+    
+    // Parsing Minutes to seconds.
+    THIS.Minutes = EndTime.ONE - StartTime.ONE 
+    // Seconds
+    THIS.Minutes = THIS.Minutes * #i60
+
+    //Seconds
+    THIS.Seconds = EndTime.TWO - StartTime.TWO
+    
+    // Parsing Delay in seconds to miliseconds.
+    THIS.Dly = THIS.Hours + THIS.Minutes
+    THIS.Dly = THIS.Dly + THIS.Seconds
+    THIS.Dly = THIS.Dly * #i1000
+    
+    IF THIS.Dly < ZERO
+        THIS.Dly = ZERO
+        PRINT_TEXT "Starting time is bigger than Ending Time."
+    ENDIF
+
+
+RETURN THIS.Dly
+
+END_CLASS

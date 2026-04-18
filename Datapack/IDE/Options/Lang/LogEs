@@ -1,0 +1,52 @@
+### Log Messages, DO NOT EDIT ###
+.welcome=<FONT FACE="Monospace" COLOR="#73c565"><B><U>Bienvenido a JingJing IDE v
+.welcomeEnd=!</U></B><BR>El uso de este programa significa que acepta el archivo EULA.rtf (o EULA.txt).</FONT><BR>
+.error001=<FONT FACE="Monospace" COLOR="red"><B><U>Error 001</U>: no se pudo obtener el nombre de la PC.</B></FONT><BR>
+.openStart=<FONT FACE="Monospace" COLOR="blue"><U>Abriendo Archivo</U>: 
+.openEnd=.</FONT><BR>
+.gc=<FONT FACE="Monospace" COLOR="blue">Se forzó la recolección de residuos.</FONT><BR>
+.error002=<FONT FACE="Monospace" COLOR="red"><B><U>Error 002</U>: No se puede abrir un archivo que no tenga la extensión .l2s o .l2c.</B></FONT><BR>
+.closeTabStart=<FONT FACE="Monospace" COLOR="blue"><U>Se cerró la pestaña</U>: "
+.closeTabEnd=".</FONT><BR>
+.saveStart=</FONT><FONT FACE="Monospace" COLOR="blue"><U>Guardando Archivo</U>: 
+.saveEnd=.</FONT><BR>
+.error003=<FONT FACE="Monospace" COLOR="red"><B><U>Error 003</U>: Error al realizar operaciones del portapapeles.</B></FONT><BR>
+.error004=<FONT FACE="Monospace" COLOR="red"><B><U>Error 004</U>: IOException mientras se realizaban operaciones con el portapapeles.</B></FONT><BR>
+.error005=<FONT FACE="Monospace" COLOR="red"><B><U>Error 005</U>: Error al realizar operaciones de cortado.</B></FONT><BR>
+.saveAsStart=<FONT FACE="Monospace" COLOR="blue"> El archivo "
+.saveAsEnd= " fue guardado satisfactoriamente.</FONT><BR>
+.multipleSaveStart=<FONT FACE="Monospace" COLOR="blue"><BR><U><B>Guardando Archivos</U>:</B></FONT><BR>
+.saveItemStart=<FONT FACE="Monospace" COLOR="blue"><I>
+.saveItemEnd=</FONT></I><BR>
+.multipleSaveEnd=<FONT FACE="Monospace" COLOR="blue"><B>Archivos guardados</B></FONT><BR>
+.cancelSave=<FONT FACE="Monospace" COLOR="blue">El proceso de guardado fue cancelado por el usuario.</FONT><BR>
+.emptyLines=<FONT FACE="Monospace" COLOR="blue">Las líneas vacías fueron removidas del documento activo.</FONT><BR>
+.removeComments=<FONT FACE="Monospace" COLOR="blue">Los comentarios fueron removidos del documento activo.</FONT><BR>
+.syntax=<FONT FACE="Monospace" COLOR="blue">Se forzó el resaltado de la sintaxis.</FONT><BR>
+.tableFill=<FONT FACE="Monospace" COLOR="blue">Se forzó el llenado de la tabla de variables.</FONT><BR>
+.error006=<FONT FACE="Monospace" COLOR="red"><B><U>Error 006</U>: El directorio de Scripts no existe!</B></FONT><BR>
+.error007=<FONT FACE="Monospace" COLOR="red"><B><U>Error 007</U>: Error al intentar cargar el directorio de Scripts.</B></FONT><BR>
+.error008=<FONT FACE="Monospace" COLOR="red"><B><U>Error 008</U>: Error al intentar remover un TAB.</B></FONT><BR>
+.error009=<FONT FACE="Monospace" COLOR="red"><B><U>Error 009</U>: IO Exception al leer las configuraciones. Se cargaron las configuraciones por defecto.</B></FONT><BR>
+.error009=<FONT FACE="Monospace" COLOR="red"><B><U>Error 009</U>: NPE Exception al leer las configuraciones. Se cargaron las configuraciones por defecto.</B></FONT><BR>
+.error011=<FONT FACE="Monospace" COLOR="red"><B><U>Error 011</U>: No se encontró el archivo de configuración.</B></FONT><BR>
+.rowExcludedStart=<FONT FACE="Monospace" COLOR="blue">La fila 
+.rowExcludedEnd= fue excluída de la adición de variables porque el campo Var_Name estaba vacío.</FONT></BR>
+.error012=<FONT FACE="Monospace" COLOR="red"><B><U>Error 012</U>: Error al cargar las propiedades.</B></FONT><BR>
+.saveSuccess=<FONT FACE="Monospace" COLOR="blue"><B>Sus configuraciones fueron guardadas exitosamente.</B></FONT><BR>
+.error013=<FONT FACE="Monospace" COLOR="red"><B><U>Error 013</U>: Ocurrió un error al intentar guardar la configuración.</B></FONT><BR>
+.error014=<FONT FACE="Monospace" COLOR="red"><B><U>Error 014</U>: No se encontró el archivo con la descripción de los métodos.</B></FONT><BR>
+.error015=<FONT FACE="Monospace" COLOR="red"><B><U>Error 015</U>: Ocurrió un error al cargar las descripciones de los Métodos.</B></FONT><BR>
+.error016=<FONT FACE="Monospace" COLOR="red"><B><U>Error 016</U>: Error al insertar el nombre del método en el documento.</B></FONT><BR>
+.error017=<FONT FACE="Monospace" COLOR="red"><B><U>Error 017</U>: Error al reemplazar las palabras.</B></FONT><BR>
+.succeedReplace=<FONT FACE="Monospace" COLOR="blue">Finalizó exitosamente el reemplazo de palabras.</FONT><BR>
+.error018=<FONT FACE="Monospace" COLOR="red"><B><U>Error 018</U>: Error al remover comentarios (se encontró '/*' sin '*/').</B></FONT><BR>
+.error019=<FONT FACE="Monospace" COLOR="red"><B><U>Error 019</U>: No se pudo borrar el archivo (
+.updateStart=<FONT FACE="Monospace" COLOR="red"><B><U>Actualización</U>: Hay una nueva versión del programa (ver: 
+.updateEnd=<FONT FACE="Monospace" COLOR="red"><B>) disponible en la página de JJIDE o desde el Actualizador en el menú 'Ejecutar'.</B></FONT><BR>
+.startDRS=<FONT FACE="Monospace" COLOR="blue"><B>El Sistema de Recuperación de Datos (SRD) está ahora activado.</B></FONT><BR>
+.stopDRS=<FONT FACE="Monospace" COLOR="blue"><B>El thread del SRD fue detenido.</B></FONT><BR>
+.recoverStart=<FONT FACE="Monospace" COLOR="blue"><B><U>El archivo</U>: "
+.recoverMid=" fue recuperado en el directorio: "
+.recoverEnd=".</B></FONT><BR>
+.error020=<FONT FACE="Monospace" COLOR="red"><B><U>Error 020</U>: el Thread del SRD colpasó.</B></FONT><BR>

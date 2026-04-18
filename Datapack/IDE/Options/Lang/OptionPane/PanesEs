@@ -1,0 +1,24 @@
+### Option Panes Captions - DO NOT EDIT ###
+.errorTitle=Error
+.closeTabTitle=Confirmación de Cierre
+.closeTab=Desea cerrar esta pestaña?\nSe perderán los datos no guardados.
+.lastTabTitle=Información de Pestaña
+.lastTab=La última pestaña no puede ser cerrada.
+.tabLimit=No puede abrir más de 30 pestañas.
+.overwriteConfirm=Desea sobreescribir: \n
+.confirmSave=Confirmar Guardado
+.extError=Debe seleccionar un tipo de extensión válido para su archivo (.l2s ó .l2c).
+.overwriteAll=Desea sobreescribir todos los documentos que ya existen?
+.noMatchTitle=Sin Coincidencias
+.noMatch=No se encontraron coincidencias para el \nString: "
+.noMoreMatchesTitle=No Más Coincidencias
+.noMoreMatches=No se encontraron más coincidencias para el\nString: "
+.exitConfirmationTitle=Confirmación de Salida
+.exitConfirmation=Desea salir?\nTodos los datos no guardados se perderán.
+.deleteConfirmationTitle=Confirmación de Borrado
+.deleteConfirmation=Desea borrar de su disco rígido el archivo seleccionado?
+.nameRepeatedTitle=Archivo Abierto
+.nameRepeated=Ya hay un archivo abierto con el nombre: "
+.nameRepeatedEnd=".\nCierre el archivo abierto para poder abrir este.
+.updateTitle=Confirmación de Actualización
+.updateMessage=Para iniciar el Actualizador la aplicación se cerrará.\nDesea continuar?

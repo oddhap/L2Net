@@ -1,0 +1,24 @@
+### Option Panes Captions - DO NOT EDIT ###
+.errorTitle=Error
+.closeTabTitle=Close Tab Confirmation
+.closeTab=Do you want to close this tab?\nAny unsaved data will be lost.
+.lastTabTitle=Tab Info
+.lastTab=The last tab can't be closed.
+.tabLimit=You can't open more than 30 tabs.
+.overwriteConfirm=Do you want to overwrite: \n
+.confirmSave=Confirm Save
+.extError=You must select a valid type of extension for your file (.l2s or .l2c).
+.overwriteAll=Do you want to overwrite all documents that already exist?
+.noMatchTitle=No Match Found
+.noMatch=No matches found for \nString: "
+.noMoreMatchesTitle=No More Matches Found
+.noMoreMatches=No more matches found for \nString: "
+.exitConfirmationTitle=Exit Confirmation
+.exitConfirmation=Do you want to exit?\nAny unsaved data will be lost.
+.deleteConfirmationTitle=Delete Confirmation
+.deleteConfirmation=Do you want to delete from your hard drive the selected file?
+.nameRepeatedTitle=File Already Open
+.nameRepeated=There's another file opened with the name: "
+.nameRepeatedEnd=".\nClose the opened file in order to open a new one.
+.updateTitle=Update Confirmation
+.updateMessage=In order to run the Update manager the app will exit.\nDo you want to proceed?

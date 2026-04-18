@@ -1,0 +1,18 @@
+### COMMANDS Correction Messages - DO NOT EDIT ###
+
+.error=* Error en la línea 
+
+######## DEFINES ########
+.typeHeader=: el tipo de Variable "
+.typeFooter=" no concuerda con nignuna clase existente.
+.command=: el nombre de la variable no puede coincidir con el de un Comando.
+.method=: el nombre de la variable no puede coincidir con el de un Método.
+.global=: el nombre de la variable no puede coincidir con el de una Global.
+.definitionError=: en Scripts (archivos .l2s) no puede definir variables o funciones con los comandos: "PUBLIC" / "PROTECTED" / "PRIVATE".
+
+######## SLEEP ########
+.varError=: el valor entre los caracteres '<&' y '&>' debe ser una variable, un int o una global.
+.commasError=: se esperaba la cadena que representa a una Variable o un Int.
+.intError=: se esperaba un valor de tipo Int como argumento.
+
+.missingVarStart=: se encontró "VAR_END" sin "VAR_START".

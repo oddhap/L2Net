@@ -1,0 +1,105 @@
+"-a"
+"-accept"    ---> Auto accept agreement
+
+"-b"
+"-blowfish"  ---> Blowfish key, example: -blowfish:777FFF22503D35516C547827412A745D
+
+
+"-c"
+"-protocol"  ---> Protocol version, example: -protocol:83
+
+
+"-d"
+"-loginport" ---> Login port, example: -loginport:2106
+
+
+"-i"
+"-loginip"   ---> Login IP, example: -loginip:64.25.35.104
+
+
+"-p"
+"-password"  ---> Password (OOG only), example: -password:abcde
+
+
+"-u"
+"-username"  ---> Username (OOG only), example: -username:L2NetUser
+
+
+"-s"
+"-script"    ---> Autoload script, example: -script:c:\script.l2s
+
+
+"-x"
+"-iglistenport" ---> IG listen port, example: -x:2106
+
+
+"-y"
+"-iglistenip"   ---> IG listen ip, example: -y:127.0.0.1
+
+
+"-z"
+"-chronicle"    ---> Chronicle, example: -z:11
+
+	Chronicles:
+                case 7://ct1
+
+                case 8://ct1.5
+
+                case 9://ct2.1
+
+                case 10://ct2.2
+
+                case 11://ct2.3
+
+                case 12: //CT2.4
+
+                case 13: //Freya
+
+                case 14: // High Five
+
+
+"-overidegameserver"   ---> Override game server (advanced login settings)
+
+"-gameserverip"    ---> Override game server IP, example: -gameserverip:197.15.64.15
+
+"-gameserverport"  ---> Override game server port, example: -gameserverport:7777
+
+
+
+"-useproxylogin"   ---> Use a proxy for the login server connection
+
+"-useproxygame"    ---> Use a proxy for the game server connection  
+
+"-socks5ip"   ---> Proxy IP
+
+"-socks5port" ---> Proxy Port
+
+"-socks5username" ---> Proxy Username
+
+"-socks5password" ---> Proxy Password
+
+
+
+"-ew"
+"-enterworld"   ---> Enterworld checkbox checked (advanced login)
+
+
+"-official_off" ---> Official server checkbox unchecked
+
+
+"-official_on"  ---> Official server checked
+
+
+"-ig"   ---> Starts l2net in IG listen mode
+
+
+"-oog"  ---> Starts l2net with the OOG login window active
+
+"-ggip" ---> Gameguard server listen ip & gameguard client connect ip
+"-ggport" --->  --- || --- port
+"-ggsrv" ---> Autostart gameguard server
+"-ggcl" ---> Autostart gameguard client
+"-secpin:123456" ---> Security pin, this will set the pin to 123456 
+"-oldclient" ---> Ticks the old client checkbox (IG login)
+"-o"
+"-options" ---> Autoload Bot options, example: -o:C:\options.l2d

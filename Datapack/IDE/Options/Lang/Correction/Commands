@@ -1,0 +1,19 @@
+### COMMANDS Correction Messages - DO NOT EDIT ###
+
+.error=* Error at line 
+
+######## DEFINES ########
+.typeHeader=: the Variable type "
+.typeFooter=" doesn't match any existing class.
+.command=: the Variable name can't match any Command.
+.method=: the Variable name can't match any Method.
+.global=: the Variable name can't match any Global.
+.definitionError=: in Scripts (.l2s files) you can't define variables or functions with "PUBLIC" / "PROTECTED" / "PRIVATE" commands.
+
+######## SLEEP ########
+.varError=: the value between characters '<&' and '&>' must be a variable, an int or a global.
+.commasError=: the string value of a Variable or an Int value was expected.
+.intError=: an Int value was expected as parameter.
+
+######## CLASS VAR BLOCK ########
+.missingVarStart=: found "VAR_END" without "VAR_START".

@@ -1,0 +1,221 @@
+// ###################### Auto Trade Script ######################
+// ######################## by Escabuchen ########################
+// ######################### Version 0.1 #########################
+// ###############################################################
+// Special thanks to: PRIVATE for his parsing method and GALOZEH
+// for the fighting script, it was very useful for trade packets.
+// ###############################################################
+
+INCLUDE StdLib\inventory.l2c
+
+SET_EVENT "<&SCRIPTEVENT_SERVERPACKET&>" "<&SYSTEM_CURRENTFILE&>" RecieveTrade 112
+SET_EVENT "<&SCRIPTEVENT_SYSTEMMESSAGE&>" "<&SYSTEM_CURRENTFILE&>" ConfirmTrade
+SET_EVENT "<&SCRIPTEVENT_CHAT&>" "<&SYSTEM_CURRENTFILE&>" RecieveChat
+
+
+// ########################## Variables ##########################
+// ###### Do not edit if you don't know what you are doing ######
+// ###############################################################
+
+DEFINE_GLOBAL ARRAYLIST Item_Cantidad 0
+DEFINE_GLOBAL ARRAYLIST Traders 0
+DEFINE_GLOBAL STRING Mensaje ""
+DEFINE_GLOBAL STRING Separador ","
+DEFINE_GLOBAL ARRAYLIST Inventario 0
+DEFINE_GLOBAL INT NumeroObjeto
+DEFINE_GLOBAL INT CantObjetos
+DEFINE_GLOBAL INT Ciclo 0
+DEFINE_GLOBAL STRING Item " "
+DEFINE_GLOBAL INT ItemID
+DEFINE_GLOBAL INT Amount 0
+DEFINE_GLOBAL STRING Trigger_Cancel ".cancel"
+DEFINE_GLOBAL STRING Trigger_Trade ","
+DEFINE_GLOBAL STRING Trigger_Confirm ".confirm"
+DEFINE_GLOBAL STRING Validacion " "
+DEFINE_GLOBAL STRING Trading "OK"
+DEFINE_GLOBAL STRING NotTrading "No"
+DEFINE_GLOBAL INT ID
+DEFINE_GLOBAL STRING UniqueID " "
+DEFINE_GLOBAL INT ItemTrade
+DEFINE_GLOBAL INT ItemAmount
+DEFINE_GLOBAL BYTEBUFFER ByteBuff 8
+DEFINE_GLOBAL STRING Bytes "0"
+DEFINE_GLOBAL STRING Authorization "False"
+DEFINE_GLOBAL INT CharID
+DEFINE_GLOBAL INT AuthID
+DEFINE_GLOBAL INT TipoPaquete
+DEFINE_GLOBAL STRING IdAutorizacion
+DEFINE_GLOBAL STRING IdAutorizado
+
+// ###############################################################
+// ###############################################################
+// ######## Define this values before starting the script ########
+// ###############################################################
+// This is the list of authorised people to trade with you char:
+
+
+Traders.ADD #$OSNAP
+Traders.ADD #$ElPebe
+
+
+
+
+// ###############################################################
+// ######################## Infinite Loop ########################
+
+
+PRINT_TEXT "Staring Auto Trade Script by Escabuchen"
+
+DO
+
+     SLEEP 1000
+
+LOOP ONE == ONE
+
+END_SCRIPT
+
+
+// ########################## Functions ##########################
+
+
+FUNCTION RecieveTrade
+
+     
+ 
+      PACKET.READ_BYTE TipoPaquete
+      PACKET.READ_INT32 CharID
+      NumeroObjeto = Traders.COUNT
+
+      DO
+
+     CHAR_GET_ID AuthID "<&Traders.Ciclo&>"
+     PRINT_TEXT "<&CharID&> , <&AuthID&>"
+
+     IF CharID == AuthID
+          Authorization = #$True
+          PRINT_TEXT "Authorized."
+     ENDIF
+
+     Ciclo = ciclo + ONE
+
+      LOOP Ciclo < NumeroObjeto
+
+      Ciclo = ZERO
+
+      IF Authorization == #$True
+              GET_INVENTORY Inventario
+              SLEEP 500
+              NumeroObjeto = Inventario.COUNT
+              PRINT_TEXT "Accepting Trade..."
+              INJECT "55 01 00 00 00"
+              SLEEP 500
+              PRINT_TEXT "This is your inventory:"
+
+              DO
+                  Item = Inventario.Ciclo.NAME
+                  ITEM_GET_ID ItemID "<&Item&>"
+                  ITEM_COUNT Amount "<&ItemID&>"
+
+                 IF Amount == ZERO
+                 Amount = ONE
+                ENDIF
+
+                  PRINT_TEXT "       <&Ciclo&>:  <&Item&> (<&Amount&>)"
+      
+               Ciclo = Ciclo + ONE
+
+              LOOP Ciclo < NumeroObjeto
+
+        PRINT_TEXT "Select the items you want to trade by sendind a PM to this char (you can do it with another char or with this one)  with the following structure: 'ListNumber,AmountToTrade' (For example: I want to trade the item that is listed as the number 3, and I want to trade 15 units, then, I send a PM to this char saying: '3,15')."     
+        Authorization = #$False
+      ELSE
+        
+        Print_Text "Authorization denied."
+        SLEEP 2000
+        INJECT "55 00 00 00 00"
+
+      ENDIF
+
+      Ciclo = ZERO
+      Validacion = Trading
+
+RETURN VOID
+
+
+// ###############################################################
+
+
+FUNCTION RecieveChat
+
+      IF MESSAGETYPE == TWO
+
+     IF "MESSAGE.CONTAINS #$<&Trigger_Cancel&>" == TRUE
+          SLEEP 500
+          PRINT_TEXT "Cancelling Trade..."
+             INJECT "1C 00 00 00 00"
+          SLEEP 1000
+     ENDIF
+
+     IF IF "MESSAGE.CONTAINS #$<&Trigger_Confirm&>" == TRUE
+          SLEEP 500
+          PRINT_TEXT "Trade Confirmed."
+          INJECT "1C 01 00 00 00"
+          Validacion = NotTrading
+     ENDIF
+
+
+
+     IF "MESSAGE.CONTAINS #$<&Trigger_Trade&>" == TRUE
+          IF Validacion == Trading
+               
+               Item_Cantidad.CLEAR
+          
+               Mensaje = MESSAGE
+               CALL_EXTERN parse-function.l2s parse VOID 3 Mensaje Separador Item_Cantidad
+
+                     GET_INVENTORY Inventario
+                     SLEEP 500
+
+               ItemTrade = Item_Cantidad.ZERO
+               ItemAmount = Item_Cantidad.ONE
+               
+                       Item = Inventario.ItemTrade.NAME
+                       ITEM_GET_ID ItemID "<&Item&>"
+                       ITEM_COUNT Amount "<&ItemID&>"
+
+               IF ItemAmount > Amount
+                    PRINT_TEXT "The amount of items you want to trade is bigger than the one you have. Pease, check your message."
+               ELSE
+
+                    ID = Inventario.ItemTrade.ID
+                      UniqueID = "ID<&Inventario.ItemTrade&>".GET_HEX32
+
+                    ByteBuff.RESET_INDEX
+                          ByteBuff.WRITE_UINT64 ItemAmount
+                      Bytes = "#$<&ByteBuff.GET_HEX&>"
+                      INJECT "1B 01 00 00 00 <&UniqueID&><&Bytes&>"
+     
+               ENDIF
+
+          ELSE
+               PRINT_TEXT "Your are not trading, jackass."
+          ENDIF
+
+     ENDIF
+
+      ENDIF
+
+RETURN VOID
+
+// ###############################################################
+
+FUNCTION ConfirmTrade
+     IF "MESSAGE.CONTAINS #$confirmed" == TRUE
+          SLEEP 500
+          PRINT_TEXT "Trade Confirmed."
+          INJECT "1C 01 00 00 00"
+          Validacion = NotTrading
+     ENDIF
+RETURN VOID
+
+// ###############################################################

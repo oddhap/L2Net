@@ -1,0 +1,24 @@
+### Option Panes Captions - DO NOT EDIT ###
+.errorTitle=Erro
+.closeTabTitle=Confirmar fechamento de aba
+.closeTab=Você deseja fechar esta aba?\nQualquer alteração não salva será perdida.
+.lastTabTitle=Informação da aba
+.lastTab=A última aba não pode ser fechada.
+.tabLimit=Você não pode abrir mais de 30 abas.
+.overwriteConfirm=Você deseja salvar por cima: \n
+.confirmSave=Confirmar salvamento
+.extError=Você deve abrir somente tipos de arquivo válidos (.l2s ou .l2c).
+.overwriteAll=Você deseja salvar por cima de todos os documentos?
+.noMatchTitle=Nada encontrado
+.noMatch=Nada encontrado para \nString: "
+.noMoreMatchesTitle=Não há mais o que encontrar
+.noMoreMatches=Não há mais o que encontrar para \nString: "
+.exitConfirmationTitle=Confirmação de saída
+.exitConfirmation=Você deseja sair?\nQualquer alteração não salva será perdida.
+.deleteConfirmationTitle=Confirmação de deleção
+.deleteConfirmation=Você deseja deletar o arquivo do seu disco?
+.nameRepeatedTitle=File Already Open
+.nameRepeated=There's another file opened with the name: "
+.nameRepeatedEnd=".\nClose the opened file in order to open a new one.
+.updateTitle=Update Confirmation
+.updateMessage=In order to run the Update manager the app will exit.\nDo you want to proceed?

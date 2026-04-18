@@ -1,0 +1,16 @@
+### Main Frame Label Captions - DO NOT EDIT ###
+.title=JingJing IDE: Corrección
+.subTitle=Corrección de Script
+.op1=Obteniendo Líneas...
+.op2=Corrigiendo...
+
+### END_SCRIPT ###
+.missing=Falta el comando "END_SCRIPT".
+
+### END_CLASS ###
+.missingEnd=Falta el comando "END_CLASS".
+
+.seemsOk=Su script parece no tener errores.
+.seemsOkClass=Su clase parece no tener errores.
+
+.missingVarEnd=: se encontró "VAR_START" sin "VAR_END".

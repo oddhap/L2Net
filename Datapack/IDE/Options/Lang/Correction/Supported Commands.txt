@@ -1,0 +1,16 @@
+Scripts:
+   * DEFINE
+   * DEFINE_GLOBAL
+   * SLEEP
+   * END_SCRIPT
+   * SCRIPT_END
+
+
+Classes:
+   * PUBLIC
+   * PRIVATE
+   * PROTECTED
+   * SLEEP
+   * END_CLASS
+   * VAR_START
+   * VAR_END

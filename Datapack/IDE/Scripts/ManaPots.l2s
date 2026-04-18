@@ -1,0 +1,42 @@
+// Script by Escabuchen.
+// Integer that allows us to check the amount of MP Pots
+DEFINE_GLOBAL INT MPPOTS 0
+DEFINE_GLOBAL INT MPLIMIT
+
+PRINT_TEXT "Starting MP Pots script..."
+
+// Starts looping...
+     DO
+          // Tells us how many MP Pots we have
+          ITEM_COUNT MPPOTS 728
+          // If you have less than 1 (if you have none) nothing will happen
+          IF (MPPOTS > ZERO)
+          
+          // Calculates the amount of MP the percentage that we want represents
+          CALL GET_MP MPLIMIT
+               // If the MP we have is lower than the desired, it uses the mana pot
+               IF (CHAR_CUR_MP < MPLIMIT)
+                    USE_ITEM 728 // Uses Mana Pot (728)
+               ENDIF
+          ENDIF
+          SLEEP 1500
+          /* Pauses the loop for 1,5 seconds (if the MP Pots have delay in your server you                    should modify this value to the amount of delay set on the server)  
+          */
+     LOOP ONE == ONE 
+
+END_SCRIPT
+
+FUNCTION GET_MP 0
+     // Integer that determines the percentage of MP you need/want
+     DEFINE INT MPPERCENT 60
+     // Integers used for math operations
+     DEFINE INT TOTAL 100
+     DEFINE INT MPPARCIAL 0
+     DEFINE INT MPSTAT 0
+
+     MPPARCIAL = MPPERCENT * CHAR_MAX_MP
+     MPSTAT = MPPARCIAL / TOTAL
+
+RETURN MPSTAT
+
+

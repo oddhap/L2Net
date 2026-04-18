@@ -1,0 +1,19 @@
+### COMMANDS Correction Messages - DO NOT EDIT ###
+
+.error=* Error at line 
+
+######## DEFINES ########
+.typeHeader=: A variável do tipo "
+.typeFooter=" não foi encontrado em nenhuma classe existente.
+.command=: Este nome de varíavel não foi encontrado em nenhum comando.
+.method=: Este nome de varíavel não foi encontrado em nenhum método.
+.global=: Este nome de varíavel não foi encontrado em nenhum global.
+.definitionError=: in Scripts (.l2s files) you can't define variables or functions with "PUBLIC" / "PROTECTED" / "PRIVATE" commands.
+
+######## SLEEP ########
+.varError=: O valor entre os caracteres '<&' and '&>' deve ser uma variável, uma int ou um global.
+.commasError=: Era esperado o valor da string de uma variável ou de uma int.
+.intError=: Era esperado o valor de uma int como parâmetro.
+
+######## CLASS VAR BLOCK ########
+.missingVarStart=: found "VAR_END" without "VAR_START".

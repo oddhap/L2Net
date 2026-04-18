@@ -1,0 +1,7 @@
+392
+0|Human
+1|Elf
+2|Dark Elf
+3|Orc
+4|Dwarf
+5|Kamael

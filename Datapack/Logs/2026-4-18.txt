@@ -1,0 +1,81 @@
+17:53:54 :[Starting login Process
+17:53:54 :[bot -> loginserver : opening
+17:53:54 :[bot -> loginserver : connected
+17:53:54 :[Got RSA key
+17:53:54 :[Got Blowfish key
+17:53:54 :[lol gameguard
+17:53:54 :[login info - packing username/pw
+17:53:54 :[login info - rsa start
+17:53:54 :[login info - rsa end
+17:53:54 :[login info - gameguard start
+17:53:54 :[login info - gameguard known query... sending known reply
+17:53:54 :[login info - gameguard end/checksum start
+17:53:54 :[login info - checksum end
+17:53:54 :[login info - blowfish done
+17:53:54 :[login info - sending login info
+17:53:54 :[login info - login info sent
+17:53:54 :[login ok
+17:53:54 :[Encoding and sending server select
+17:53:54 :[bot -> gameserver : opening
+17:53:54 :[bot -> gameserver : connected
+17:53:54 :[Welcome to the game loop
+17:53:54 :[gameserver - got packet encryption key
+17:53:54 :[gameserver - got client ID encryption key
+17:53:54 :[Getting char list
+17:53:54 :[logging into char
+17:53:54 :[The normal moon is in the sky.
+17:53:54 :[Sent GG init packet
+17:53:57 :[DEBUG: Enterworld High Five
+17:53:58 :[Welcome to the World of Lineage II.
+17:53:58 :[This server uses L2J, a project founded by L2Chef
+17:53:58 :[and developed by L2J Team at www.l2jserver.com
+17:53:58 :[Copyright 2004-2025
+17:53:58 :[Thank you for 21 years!
+17:53:58 :[Seven Signs: The quest event period has begun. Speak with a Priest of Dawn or Priestess of Dusk if you wish to participate in the event.
+17:53:58 :[Ichigo: Thanks for using L2J.
+17:53:58 :[Ichigo: http://www.l2jserver.com/
+17:55:11 :[Ichigo has inflicted 14 damage on Gremlin.
+17:55:12 :[Ichigo has received 10 damage from Gremlin.
+17:55:12 :[Ichigo has inflicted 13 damage on Gremlin.
+17:55:13 :[Ichigo has inflicted 17 damage on Gremlin.
+17:55:14 :[Ichigo has received 10 damage from Gremlin.
+17:55:14 :[Ichigo has inflicted 12 damage on Gremlin.
+17:55:15 :[Ichigo has received 10 damage from Gremlin.
+17:55:16 :[Ichigo has inflicted 13 damage on Gremlin.
+17:55:16 :[[I used social skill: Level Up]
+17:55:16 :[Your level has increased!
+17:55:16 :[You are starting to feel the effects of Nevit's Advent Blessing.
+17:55:16 :[You have acquired 87 XP (Bonus: 58) and 6 SP (Bonus: 4).
+17:55:16 :[Adding npc to moblist(npc dead): 268465459
+17:55:20 :[Ichigo has inflicted 15 damage on Gremlin.
+17:55:21 :[Ichigo has received 10 damage from Gremlin.
+17:55:21 :[Ichigo has inflicted 16 damage on Gremlin.
+17:55:23 :[Ichigo has inflicted 12 damage on Gremlin.
+17:55:23 :[Ichigo has received 9 damage from Gremlin.
+17:55:24 :[Ichigo has inflicted 17 damage on Gremlin.
+17:55:25 :[Ichigo has received 9 damage from Gremlin.
+17:55:25 :[Ichigo has inflicted 15 damage on Gremlin.
+17:55:25 :[You have acquired 87 XP (Bonus: 58) and 6 SP (Bonus: 4).
+17:55:25 :[Adding npc to moblist(npc dead): 268465453
+17:55:25 :[You are no longer protected from aggressive monsters.
+17:55:30 :[Ichigo has inflicted 15 damage on Gremlin.
+17:55:31 :[Ichigo has received 8 damage from Gremlin.
+17:55:32 :[Ichigo has inflicted 12 damage on Gremlin.
+17:55:33 :[Ichigo has inflicted 13 damage on Gremlin.
+17:55:33 :[Ichigo has evaded Gremlin's attack.
+17:55:34 :[Ichigo has inflicted 10 damage on Gremlin.
+17:55:35 :[Ichigo has received 8 damage from Gremlin.
+17:55:35 :[Ichigo has inflicted 11 damage on Gremlin.
+17:55:37 :[Ichigo has inflicted 10 damage on Gremlin.
+17:55:37 :[You have acquired 87 XP (Bonus: 58) and 6 SP (Bonus: 4).
+17:55:37 :[Adding npc to moblist(npc dead): 268465454
+17:55:40 :[Ichigo has inflicted 11 damage on Gremlin.
+17:55:41 :[Ichigo has received 8 damage from Gremlin.
+17:55:41 :[Ichigo has inflicted 10 damage on Gremlin.
+17:55:43 :[Ichigo has inflicted 12 damage on Gremlin.
+17:55:43 :[Ichigo has received 9 damage from Gremlin.
+17:55:44 :[Ichigo has inflicted 13 damage on Gremlin.
+17:55:45 :[Ichigo has received 8 damage from Gremlin.
+17:55:45 :[Ichigo has inflicted 11 damage on Gremlin.
+17:55:46 :[Ichigo has inflicted 12 damage on Gremlin.
+17:55:46 :[You have acquired 87 XP (Bonus: 58) and 6 

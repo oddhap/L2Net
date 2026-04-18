@@ -1,0 +1,52 @@
+### Log Messages, DO NOT EDIT ###
+.welcome=<FONT FACE="Monospace" COLOR="#73c565"><B><U>Welcome to JingJing IDE v
+.welcomeEnd=!</U></B><BR>The use of this program assumes you agree to the EULA.rtf (or EULA.txt) file.</FONT><BR>
+.error001=<FONT FACE="Monospace" COLOR="red"><B><U>Error 001</U>: Failed to get computer name.</B></FONT><BR>
+.openStart=<FONT FACE="Monospace" COLOR="blue"><U>Opening File</U>: 
+.openEnd=.</FONT><BR>
+.gc=<FONT FACE="Monospace" COLOR="blue">Forced Garbage Collection.</FONT><BR>
+.error002=<FONT FACE="Monospace" COLOR="red"><B><U>Error 002</U>: You can't load any file that it's not L2NET related. (.l2s / .l2c)</B></FONT><BR>
+.closeTabStart=<FONT FACE="Monospace" COLOR="blue"><U>Closed Tab</U>: "
+.closeTabEnd=".</FONT><BR>
+.saveStart=<FONT FACE="Monospace" COLOR="blue"><U>Saving File</U>: 
+.saveEnd=.</FONT><BR>
+.error003=<FONT FACE="Monospace" COLOR="red"><B><U>Error 003</U>: Error while performing clipboard operations.</B></FONT><BR>
+.error004=<FONT FACE="Monospace" COLOR="red"><B><U>Error 004</U>: IOException while performing clipboard operations.</B></FONT><BR>
+.error005=<FONT FACE="Monospace" COLOR="red"><B><U>Error 005</U>: Error while performing cut operations.</B></FONT><BR>
+.saveAsStart=<FONT FACE="Monospace" COLOR="blue"> File "
+.saveAsEnd= " was saved successfully.</FONT><BR>
+.multipleSaveStart=<FONT FACE="Monospace" COLOR="blue"><BR><B><U>Saving files</U>:</B></FONT><BR>
+.saveItemStart=<FONT FACE="Monospace" COLOR="blue"><I>
+.saveItemEnd=</FONT></I><BR>
+.multipleSaveEnd=<FONT FACE="Monospace" COLOR="blue"><B>Files saved.</B></FONT><BR>
+.cancelSave=<FONT FACE="Monospace" COLOR="blue">Save process cancelled by user.</FONT><BR>
+.emptyLines=<FONT FACE="Monospace" COLOR="blue">Empty lines trimmed from the active document.</FONT><BR>
+.removeComments=<FONT FACE="Monospace" COLOR="blue">Comments removed from the active document.</FONT><BR>
+.syntax=<FONT FACE="Monospace" COLOR="blue">Forced syntax highlight.</FONT><BR>
+.tableFill=<FONT FACE="Monospace" COLOR="blue">Forced variable table fill.</FONT><BR>
+.error006=<FONT FACE="Monospace" COLOR="red"><B><U>Error 006</U>: The script directory doesn't exist!</B></FONT><BR>
+.error007=<FONT FACE="Monospace" COLOR="red"><B><U>Error 007</U>: Error while trying to load Script Directory.</B></FONT><BR>
+.error008=<FONT FACE="Monospace" COLOR="red"><B><U>Error 008</U>: Error while removing TAB.</B></FONT><BR>
+.error009=<FONT FACE="Monospace" COLOR="red"><B><U>Error 009</U>: IO Exception while reading settings. Default settings loaded.</B></FONT><BR>
+.error010=<FONT FACE="Monospace" COLOR="red"><B><U>Error 010</U>: NPE Exception while reading settings. Default settings loaded.</B></FONT><BR>
+.error011=<FONT FACE="Monospace" COLOR="red"><B><U>Error 011</U>: Settings file not found.</B></FONT><BR>
+.rowExcludedStart=<FONT FACE="Monospace" COLOR="blue">Row 
+.rowExcludedEnd= was excluded from Var add because the Var_Name was empty.</FONT></BR>
+.error012=<FONT FACE="Monospace" COLOR="red"><B><U>Error 012</U>: Error while loading properties.</B></FONT><BR>
+.saveSuccess=<FONT FACE="Monospace" COLOR="blue"><B>Your settings were saved successfully.</B></FONT><BR>
+.error013=<FONT FACE="Monospace" COLOR="red"><B><U>Error 013</U>: An error occurred while saving settings.</B></FONT><BR>
+.error014=<FONT FACE="Monospace" COLOR="red"><B><U>Error 014</U>: Methods Description file not found.</B></FONT><BR>
+.error015=<FONT FACE="Monospace" COLOR="red"><B><U>Error 015</U>: Failed to load Methods Description file.</B></FONT><BR>
+.error016=<FONT FACE="Monospace" COLOR="red"><B><U>Error 016</U>: Error while inserting method's name into document.</B></FONT><BR>
+.error017=<FONT FACE="Monospace" COLOR="red"><B><U>Error 017</U>: Error while replacing words.</B></FONT><BR>
+.succeedReplace=<FONT FACE="Monospace" COLOR="blue">Finished replacing words successfully.</FONT><BR>
+.error018=<FONT FACE="Monospace" COLOR="red"><B><U>Error 018</U>: Error while removing comments (found '/*' without '*/').</B></FONT><BR>
+.error019=<FONT FACE="Monospace" COLOR="red"><B><U>Error 019</U>: Failed to delete file (
+.updateStart=<FONT FACE="Monospace" COLOR="red"><B><U>Update</U>: There's a newer version of JJIDE available (ver: 
+.updateEnd=<FONT FACE="Monospace" COLOR="red"><B>). Download it from JJIDE's website or in the menu press: 'Run -> Update Manager'.</B></FONT><BR>
+.startDRS=<FONT FACE="Monospace" COLOR="blue"><B>Data Recovery System (DRS) is now active.</B></FONT><BR>
+.stopDRS=<FONT FACE="Monospace" COLOR="blue"><B>DRS thread terminated.</B></FONT><BR>
+.recoverStart=<FONT FACE="Monospace" COLOR="blue"><B><U>File</U>: "
+.recoverMid=" was recovered at directory: "
+.recoverEnd=".</B></FONT><BR>
+.error020=<FONT FACE="Monospace" COLOR="red"><B><U>Error 020</U>: DRS Thread crashed.</B></FONT><BR>

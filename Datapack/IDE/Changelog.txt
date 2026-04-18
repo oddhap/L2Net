@@ -1,0 +1,85 @@
+Changelog:
+
+# v 0.1 BETA3 ---> v 0.2
+- Added Data Recovery System to avoid data loss.
+- App. now automatically checks for newer versions on startup.
+- Created an updater that will "download and install" the latest jjide ver for you, it can be found under the 'Run' menu.
+- Added a filter to avoid openig the same file in two different tabs.
+	(Also, you can't no longer open a file with a name that's 
+	already in use in the JTabbedPane)
+- Double click on a tab name to change the name of the file.
+- Program can now save a stack trace when an error occurs during startup.
+- Added an option to remember the files you were using when you closed the IDE. [BETA]
+- Changed the Option frame, now it displays the selected color for a component with a custom jButton I've created.
+- Added a zebra background to the Variables Table.
+- Added icons next to the file name in the FileTree.
+- Added an option to disable update check in 'General' settings.
+- Added a new Tab in Option's Frame with Interface customizations.
+- Divided work area in three panels you can resize at your will.
+- Disabled overwrite check when saving with Ctrl+S (normal save).
+- Hex Converter now uses the same font you setup for the editor.
+- Added option to disable Classes Method List under "Components" tab. 
+- Added option to start script line count at 0 under "Components" tab.
+
+
+############:: INITIAL RELEASE ::############
+
+
+# v 0.1 BETA2 ---> v 0.1 BETA3:
+- Added Line Highlight.
+- Added "Close Tab" button next to each tab name.
+- Added "Add New Class" button.
+- Major improvements in highlight speeds (60~65% quicker).
+- Fixed UndoManager.
+- Improved the way comments (fully support for multiline comments) and methods are highlighted.
+- Script correction now can distinguish between Scripts and	Classes, and their specific methods.
+- Added Popup Menu for FileTree (right click on it).
+- Double click on FileTree will open script in new Tab. 
+	(Same for Open, New Script and New Class). 
+	You can still open files in the same tab you're 
+	working on by using FileTree popup menu.
+- FileTree now automatically updates the content when you save a file.
+- Program uses ~40% less CPU to highlight scripts.
+- Added method list for event globals.
+- Added "Run Benchmark" function under "Run" menu.
+- Added translations for JOptionPanes.
+- Redistributed Options form in three tabs.
+- Added line highlight options. They can be found in the "Highlights" tab.
+- Fixed potential error while using custom classes as a variable type.
+- Divided toolbar into multiple toolbars.
+- FileTree automatically updates the content when you save a file.
+- Added table sort by column.
+- Added icons in the editor tabs title, according to the file extension.
+
+# v 0.1 BETA1 ---> v 0.1 BETA2:
+- Added Loading Screen.
+- Added variables classes method list. Automatically displayed when you insert a dot after a variable.
+	(Esc to close it, Enter to insert the selected method)
+- Added "Syntax Check" (F6) function under the "Run" menu.
+- Changed Log (used to be a JTextArea, now is a JEditorPane w/ HTML support), adding colors.
+- Added a packet converter tool under the "Tools" menu.
+- Added an "Import Functions" tool under the "Tools" menu.
+- Fully translated the program to Spanish, accesible from the Settings panel.
+- Added an option to run the program in Portuguese, accesible from the Settings panel. (All credits go to Angelificatus, he rocks :P)
+- Added missing globals/commands/methods.
+- Added THREAD as a variable type.
+- Added highlight matches when performing a search.
+- Added variables highlight on document when you press an specific variable on the Variables Table.
+- Added timer (1 second) to fill automatically variables Table.
+- Added option to remove highlights on Editor under the "Edit" menu. (Or press Esc)
+- Tabs are automatically parsed to spaces when you load a file. (the amount of spaces depends on the parameter tabSize)
+- Small optimization in the CPU usage while highlighting large Scripts.
+- Added option to change init resolution.
+- Added an option to modify Method's Text Color.
+- Added options to customize Components Colors, to make it easier to read/view.
+- Small fixes in "RemoveComments" and "TrimEmptyLines" functions.
+
+
+
+# v 0.1 BETA1 ---> v 0.1 BETA2
+- Fully translated it to Spanish, accesible from the Settings panel.
+- Added and option to modify Method's Text Color.
+- Added options to customize Components Colors, to make it easier to read/view.
+- Added matches highlight when performing a search.
+- Added variables highlight on document when you press a specific variable on the Variables Table.
+- Added option to remove highlights on Editor under the "Edit" menu. (Or press Esc)

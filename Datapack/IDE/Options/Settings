@@ -1,0 +1,32 @@
+#JingJing IDE Settings
+#Sun Oct 17 13:24:41 ART 2010
+Horizontal2=500
+Horizontal1=240
+EditorBackground=255,255,255
+FontSize=12
+DisableUpdates=false
+CommandText=0,0,153
+TabSize=5
+FontColor=0,0,0
+MethodText=0,153,0
+InitSizeW=1024
+Maximize=false
+ListEnabled=true
+Vertical1=240
+SelectionColor=51,153,255
+HighlightColor=238,238,147
+CaretColor=0,0,0
+GlobalsText=226,117,103
+Language=English
+InitSizeH=768
+RememberInterface=false
+LoadDRS=true
+LineHighlightOpacity=30
+ScriptFolder=Scripts\\
+CommentsText=115,115,155
+Font=Monospaced
+LineHighlightColor=91,172,255
+LineHighlightBorder=91,172,255
+WriteDelay=800
+LastUsed=false
+StartOffset=false
