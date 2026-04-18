@@ -141,6 +141,7 @@ namespace L2_login
                 }
                 catch { }
             }
+
         }
 
         void Map_Resize(object sender, EventArgs e)
@@ -229,6 +230,9 @@ namespace L2_login
 
         protected void DrawGameInner()
         {
+            if (dxGraphics == null || backBuffer == null)
+                return;
+
             if (LoadTextures)
             {
                 try
@@ -568,21 +572,22 @@ namespace L2_login
 
         private void DrawMap(int x_block, int y_block, int z)
         {
+            if (dxGraphics == null)
+                return;
+
             MapData map = GetMapFile(x_block, y_block, z);
             if (map == null || map.dxTexture == null)
                 return;
-
-            float mapUnit = Globals.UNITS;
-            int mapWidth = (int)mapUnit;
-            int mapHeight = (int)mapUnit;
 
             int centerX = xm;
             int centerY = ym;
             float playerX = xc;
             float playerY = yc;
 
-            float blockWorldX = x_block * mapUnit;
-            float blockWorldY = y_block * mapUnit;
+            float blockWorldX = map.UpperX;
+            float blockWorldY = map.UpperY;
+            float mapWidth = map.LowerX - map.UpperX;
+            float mapHeight = map.LowerY - map.UpperY;
 
             float offsetX = (blockWorldX - playerX) / scale + centerX;
             float offsetY = (blockWorldY - playerY) / scale + centerY;
@@ -839,8 +844,12 @@ namespace L2_login
         {
             try
             {
+                string mapIndexPath = ResolveMapIndexPath();
+                if (mapIndexPath == null)
+                    throw new FileNotFoundException("maps.txt");
+
                 string loaded;
-                StreamReader filein = new StreamReader(Globals.PATH + "\\data\\maps.txt");
+                StreamReader filein = new StreamReader(mapIndexPath);
                 while ((loaded = filein.ReadLine()) != null)
                 {
                     MapData mapdata = new MapData();
@@ -859,21 +868,53 @@ namespace L2_login
             MapData map = GetMapFile(x_block, y_block, z);
             if (map != null && map.Image == null)
             {
-                if (File.Exists(Globals.PATH + "\\Maps\\" + map.FileName))
+                string mapImagePath = ResolveMapImagePath(map.FileName);
+                if (mapImagePath != null)
                 {
                     map.Image = new MemoryStream();
                     if (map.Encrypted)
                     {
-                        byte[] data = AES.Decrypt(Globals.PATH + "\\Maps\\" + map.FileName, Globals.Map_Key, Globals.Map_Salt);
+                        byte[] data = AES.Decrypt(mapImagePath, Globals.Map_Key, Globals.Map_Salt);
                         new Bitmap(new MemoryStream(data)).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                     }
                     else
                     {
-                        new Bitmap(Globals.PATH + "\\Maps\\" + map.FileName).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
+                        new Bitmap(mapImagePath).Save(map.Image, System.Drawing.Imaging.ImageFormat.Bmp);
                     }
                     LoadTextures = true;
                 }
             }
+        }
+
+        private static string ResolveMapIndexPath()
+        {
+            return FindFirstExistingPath(
+                Path.Combine(Globals.PATH, "data", "maps.txt"),
+                Path.Combine(Globals.PATH, "Data", "maps.txt"),
+                Path.Combine(Globals.PATH, "Datapack", "Data", "maps.txt"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "maps.txt"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "maps.txt"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datapack", "Data", "maps.txt"));
+        }
+
+        private static string ResolveMapImagePath(string fileName)
+        {
+            return FindFirstExistingPath(
+                Path.Combine(Globals.PATH, "Maps", fileName),
+                Path.Combine(Globals.PATH, "Datapack", "Maps", fileName),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Maps", fileName),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Datapack", "Maps", fileName));
+        }
+
+        private static string FindFirstExistingPath(params string[] candidates)
+        {
+            foreach (string candidate in candidates)
+            {
+                if (File.Exists(candidate))
+                    return candidate;
+            }
+
+            return null;
         }
 
         private void ClearUnusedMaps()
