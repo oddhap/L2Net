@@ -27,7 +27,7 @@ Any concerns about copyright or other challenges can be messaged to the open sou
 
 ## Recent Changes
 
-### 2025 - SlimDX Removal
+### 2026 - SlimDX Removal
 Migrated from SlimDX to built-in .NET libraries:
 - Replaced SlimDX.Direct3D9 with GDI+ (System.Drawing) for map rendering
 - Replaced SlimDX.DirectInput with Windows.GetAsyncKeyState API for keyboard input
