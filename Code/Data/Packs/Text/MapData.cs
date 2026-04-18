@@ -1,5 +1,5 @@
-﻿using System;
-using SlimDX.Direct3D9;
+using System;
+using System.Drawing;
 
 namespace L2_login
 {
@@ -12,7 +12,7 @@ namespace L2_login
         public int Z_Max = 1000000;
         public bool Encrypted = false;
         private System.IO.MemoryStream _image = null;
-        private Texture _dxTexture;
+        private Bitmap _dxTexture;
 
         public float UpperX = 0;
         public float UpperY = 0;
@@ -59,7 +59,7 @@ namespace L2_login
                 _image = value;
             }
         }
-        public Texture dxTexture
+        public Bitmap dxTexture
         {
             get
             {

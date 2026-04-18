@@ -22,7 +22,6 @@ Any concerns about copyright or other challenges can be messaged to the open sou
 Download
 ---
 * Download and Extract [Latest Download Link](https://github.com/Xackery/l2net/raw/master/bin/latest/latest-2015-09-10.zip)
-* Download and Install [SlimDX](http://slimdx.org/download.php) (Used for Game Window, optional)
 
 Compiling
 ---

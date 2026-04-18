@@ -8,137 +8,67 @@ namespace L2_login
 {
     public class AES
     {
-        private static RijndaelManaged rm = new RijndaelManaged();
+        private static AESCommon _aes = new AESCommon();
 
-        /// <summary>
-        /// Use AES to encrypt data string. The output string is the encrypted bytes as a base64 string.
-        /// The same password must be used to decrypt the string.
-        /// </summary>
-        /// <param name="data">Clear string to encrypt.</param>
-        /// <param name="password">Password used to encrypt the string.</param>
-        /// <returns>Encrypted result as Base64 string.</returns>
         public static string EncryptData(string data, string password, string salt)
         {
             if (data == null)
-            {
                 throw new ArgumentNullException("data");
-            }
-
             if (password == null)
-            {
                 throw new ArgumentNullException("password");
-            }
-
             if (salt == null)
-            {
                 throw new ArgumentNullException("salt");
-            }
 
-            byte[] encBytes = EncryptData(Encoding.UTF8.GetBytes(data), password, salt, PaddingMode.ISO10126);
+            byte[] encBytes = EncryptData(Encoding.UTF8.GetBytes(data), password, salt);
             return Convert.ToBase64String(encBytes);
         }
-        /// <summary>
-        /// Decrypt the data string to the original string.  The data must be the base64 string
-        /// returned from the EncryptData method.
-        /// </summary>
-        /// <param name="data">Encrypted data generated from EncryptData method.</param>
-        /// <param name="password">Password used to decrypt the string.</param>
-        /// <returns>Decrypted string.</returns>
+
         public static string DecryptData(string data, string password, string salt)
         {
             if (data == null)
-            {
                 throw new ArgumentNullException("data");
-            }
-
             if (password == null)
-            {
                 throw new ArgumentNullException("password");
-            }
-
             if (salt == null)
-            {
                 throw new ArgumentNullException("salt");
-            }
 
             byte[] encBytes = Convert.FromBase64String(data);
-            byte[] decBytes = DecryptData(encBytes, password, salt, PaddingMode.ISO10126);
+            byte[] decBytes = DecryptData(encBytes, password, salt);
             return Encoding.UTF8.GetString(decBytes);
         }
 
-        public static byte[] EncryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
+        public static byte[] EncryptData(byte[] data, string password, string salt)
         {
             if (data == null || data.Length == 0)
-            {
                 throw new ArgumentNullException("data");
-            }
-
             if (password == null)
-            {
                 throw new ArgumentNullException("password");
-            }
-
             if (salt == null)
-            {
                 throw new ArgumentNullException("salt");
-            }
 
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
-            rm.Padding = paddingMode;
-            ICryptoTransform encryptor = rm.CreateEncryptor(pdb.GetBytes(16), pdb.GetBytes(16));
-            using (MemoryStream msEncrypt = new MemoryStream())
-            using (CryptoStream encStream = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-            {
-                encStream.Write(data, 0, data.Length);
-                encStream.FlushFinalBlock();
-                return msEncrypt.ToArray();
-            }
+            return _aes.Encrypt(data, password, salt);
         }
 
-        public static byte[] DecryptData(byte[] data, string password, string salt, PaddingMode paddingMode)
+        public static byte[] DecryptData(byte[] data, string password, string salt)
         {
             if (data == null || data.Length == 0)
-            {
                 throw new ArgumentNullException("data");
-            }
-
             if (password == null)
-            {
                 throw new ArgumentNullException("password");
-            }
-
             if (salt == null)
-            {
                 throw new ArgumentNullException("salt");
-            }
 
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt));
-            rm.Padding = paddingMode;
-            ICryptoTransform decryptor = rm.CreateDecryptor(pdb.GetBytes(16), pdb.GetBytes(16));
-            using (MemoryStream msDecrypt = new MemoryStream(data))
-            using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-            {
-                // Decrypted bytes will always be less then encrypted bytes, so len of encrypted data will be big enouph for buffer.
-                byte[] fromEncrypt = new byte[data.Length];
-                // Read as many bytes as possible.
-                int read = csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length);
-                if (read < fromEncrypt.Length)
-                {
-                    // Return a byte array of proper size.
-                    byte[] clearBytes = new byte[read];
-                    Buffer.BlockCopy(fromEncrypt, 0, clearBytes, 0, read);
-                    return clearBytes;
-                }
-                return fromEncrypt;
-            }
+            return _aes.Decrypt(data, password, salt);
         }
 
         public static byte[] Decrypt(string filename, string key, string salt)
         {
-            BinaryReader filein = new BinaryReader(new StreamReader(filename).BaseStream);
-
-            byte[] data = filein.ReadBytes((int)filein.BaseStream.Length);
-            filein.Close();
+            byte[] data;
+            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            {
+                data = new byte[fs.Length];
+                fs.Read(data, 0, data.Length);
+            }
 
             try
             {
@@ -146,55 +76,205 @@ namespace L2_login
             }
             catch (Exception e)
             {
-                string err;
+                string err = e.Message;
+                if (e.InnerException != null)
+                    err += Environment.NewLine + e.InnerException.Message;
 
                 try
                 {
-                    err = e.Message + Environment.NewLine + e.InnerException.Message;
+                    Globals.l2net_home.Add_PopUpError("failed to decrypt '" + filename + "' file data" + Environment.NewLine + err);
                 }
-                catch
-                {
-                    err = e.Message;
-                }
-
-                Globals.l2net_home.Add_PopUpError("failed to decrypt '" + filename + "' file data" + Environment.NewLine + err);
+                catch { }
                 throw e;
             }
         }
 
         public static byte[] Decrypt(byte[] data, string key, string salt)
         {
-            byte[] dec;
-
-            try
-            {
-                dec = DecryptData(data, key, salt, PaddingMode.ISO10126);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            byte[] dec = _aes.Decrypt(data, key, salt);
 
             int d_len = BitConverter.ToInt32(dec, 0);
 
-            MemoryStream ms = new MemoryStream(dec);
-            ms.Position = 4;
+            using (MemoryStream ms = new MemoryStream(dec))
+            {
+                ms.Position = 4;
 
-            // Use the newly created memory stream for the compressed data.
-            DeflateStream compressedzipStream = new DeflateStream(ms, CompressionMode.Decompress, true);
-            //Console.WriteLine("Compression");
-            byte[] zdec = new byte[d_len];
-            int cnt = compressedzipStream.Read(zdec, 0, d_len);
-            // Close the stream.
-            compressedzipStream.Close();
-            ms.Close();
+                using (DeflateStream compressedzipStream = new DeflateStream(ms, CompressionMode.Decompress, true))
+                {
+                    byte[] zdec = new byte[d_len];
+                    int cnt = compressedzipStream.Read(zdec, 0, d_len);
 
-            dec = new byte[cnt];
-            Array.ConstrainedCopy(zdec, 0, dec, 0, cnt);
-
-            zdec = null;
-
-            return dec;
+                    byte[] result = new byte[cnt];
+                    Array.ConstrainedCopy(zdec, 0, result, 0, cnt);
+                    return result;
+                }
+            }
         }
-    }//end of class
+
+        private class AESCommon
+        {
+            public byte[] Encrypt(byte[] data, string password, string salt)
+            {
+                using (var pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt)))
+                {
+                    using (RijndaelManaged rm = new RijndaelManaged())
+                    {
+                        rm.Key = pdb.GetBytes(32);
+                        rm.IV = pdb.GetBytes(16);
+                        rm.Padding = PaddingMode.PKCS7;
+                        rm.Mode = CipherMode.CBC;
+
+                        using (MemoryStream msEncrypt = new MemoryStream())
+                        using (CryptoStream encStream = new CryptoStream(msEncrypt, rm.CreateEncryptor(), CryptoStreamMode.Write))
+                        {
+                            encStream.Write(data, 0, data.Length);
+                            encStream.FlushFinalBlock();
+                            return msEncrypt.ToArray();
+                        }
+                    }
+                }
+            }
+
+            public byte[] Decrypt(byte[] data, string password, string salt)
+            {
+                try
+                {
+                    return DecryptWithMethod(data, password, salt, 0);
+                }
+                catch
+                {
+                    try
+                    {
+                        return DecryptWithMethod(data, password, salt, 1);
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            return DecryptWithMethod(data, password, salt, 2);
+                        }
+                        catch
+                        {
+                            return DecryptWithMethod(data, password, salt, 3);
+                        }
+                    }
+                }
+            }
+
+            private byte[] DecryptWithMethod(byte[] data, string password, string salt, int method)
+            {
+                if (method == 0)
+                {
+                    return DecryptLegacy(data, password, salt);
+                }
+                else if (method == 1)
+                {
+                    return DecryptISO10126(data, password, salt);
+                }
+                else if (method == 2)
+                {
+                    return DecryptPKCS7(data, password, salt);
+                }
+                else
+                {
+                    return DecryptZeros(data, password, salt);
+                }
+            }
+
+            private byte[] DecryptPKCS7(byte[] data, string password, string salt)
+            {
+                using (var pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt)))
+                {
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.Key = pdb.GetBytes(32);
+                        aes.IV = pdb.GetBytes(16);
+                        aes.Padding = PaddingMode.PKCS7;
+
+                        return DecryptWithAES(data, aes);
+                    }
+                }
+            }
+
+            private byte[] DecryptISO10126(byte[] data, string password, string salt)
+            {
+                using (var pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt)))
+                {
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.Key = pdb.GetBytes(32);
+                        aes.IV = pdb.GetBytes(16);
+                        aes.Padding = PaddingMode.ISO10126;
+
+                        return DecryptWithAES(data, aes);
+                    }
+                }
+            }
+
+            private byte[] DecryptZeros(byte[] data, string password, string salt)
+            {
+                using (var pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt)))
+                {
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.Key = pdb.GetBytes(32);
+                        aes.IV = pdb.GetBytes(16);
+                        aes.Padding = PaddingMode.Zeros;
+
+                        return DecryptWithAES(data, aes);
+                    }
+                }
+            }
+
+            private byte[] DecryptLegacy(byte[] data, string password, string salt)
+            {
+                using (var pdb = new PasswordDeriveBytes(password, Encoding.UTF8.GetBytes(salt)))
+                {
+                    using (RijndaelManaged rm = new RijndaelManaged())
+                    {
+                        rm.Key = pdb.GetBytes(32);
+                        rm.IV = pdb.GetBytes(16);
+                        rm.Padding = PaddingMode.PKCS7;
+                        rm.Mode = CipherMode.CBC;
+
+                        return DecryptWithRijndael(data, rm);
+                    }
+                }
+            }
+
+            private byte[] DecryptWithAES(byte[] data, Aes aes)
+            {
+                using (MemoryStream msDecrypt = new MemoryStream(data))
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                {
+                    byte[] fromEncrypt = new byte[data.Length];
+                    int read = csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length);
+                    if (read < fromEncrypt.Length)
+                    {
+                        byte[] clearBytes = new byte[read];
+                        Buffer.BlockCopy(fromEncrypt, 0, clearBytes, 0, read);
+                        return clearBytes;
+                    }
+                    return fromEncrypt;
+                }
+            }
+
+            private byte[] DecryptWithRijndael(byte[] data, RijndaelManaged rm)
+            {
+                using (MemoryStream msDecrypt = new MemoryStream(data))
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, rm.CreateDecryptor(), CryptoStreamMode.Read))
+                {
+                    byte[] fromEncrypt = new byte[data.Length];
+                    int read = csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length);
+                    if (read < fromEncrypt.Length)
+                    {
+                        byte[] clearBytes = new byte[read];
+                        Buffer.BlockCopy(fromEncrypt, 0, clearBytes, 0, read);
+                        return clearBytes;
+                    }
+                    return fromEncrypt;
+                }
+            }
+        }
+    }
 }

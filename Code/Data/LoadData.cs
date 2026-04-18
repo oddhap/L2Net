@@ -187,7 +187,7 @@ namespace L2_login
             try
             {
 #endif
-            dec = GetData(data_lvlexp, "<M4H90ag7{_j6~3[");
+            dec = data_lvlexp;
 
             mem_stream = new MemoryStream(dec);
             temp_stream = new StreamReader(mem_stream);
@@ -238,7 +238,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_servername, "-8:2eF_08$6-o)IJ");
+                dec = data_servername;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -285,7 +285,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_systemmsg, "gA7ru8akusakenaf");
+                dec = data_systemmsg;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -332,7 +332,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_hennagrp, "8Er5FREjaCen7Thu");
+                dec = data_hennagrp;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -384,7 +384,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_npcname, "c8c2xagUga5enE7A");
+                dec = data_npcname;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -436,7 +436,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_itemname, "speves4azu52JutH");
+                dec = data_itemname;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -477,7 +477,7 @@ namespace L2_login
             //////////////////
             try
             {
-                dec = GetData(data_etcitemgrp, "5rePruchetupHuth");
+                dec = data_etcitemgrp;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -510,7 +510,7 @@ namespace L2_login
             //////////////
             try
             {
-                dec = GetData(data_weapongrp, "defru6e4ezuyuSWE");
+                dec = data_weapongrp;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -546,7 +546,7 @@ namespace L2_login
             //////////////
             try
             {
-                dec = GetData(data_armorgrp, "8uf53XU3ravudepe");
+                dec = data_armorgrp;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -590,7 +590,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_classes, "-^P_6.97R)YEFW4y");
+                dec = data_classes;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -637,7 +637,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_races, "3L=GSb_H4j-&S£m1");
+                dec = data_races;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -684,7 +684,7 @@ namespace L2_login
                 StreamReader temp_stream;
                 MemoryStream mem_stream;
 
-                dec = GetData(data_skillname, "br2qeSw65ephepH8");
+dec = data_skillname;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -740,7 +740,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_actionname, "bruyurEja6rUwaph");
+                dec = data_actionname;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -787,7 +787,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_questname, "D_d/-pmzRPnC|!mS");
+                dec = data_questname;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -834,7 +834,7 @@ namespace L2_login
 
             try
             {
-                dec = GetData(data_zonename, "pUB6epUC7uwraxaw");
+                dec = data_zonename;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);
@@ -881,9 +881,7 @@ namespace L2_login
 
             try
             {
-                ///#)"(#&JH(S&ZKS=
-                //dec = GetData(Globals.PATH + "\\data\\npcstring.txt");
-                dec = GetData(data_npcstring, ")#&!%J)(/S)J/&%¤");
+                dec = data_npcstring;
 
                 mem_stream = new MemoryStream(dec);
                 temp_stream = new StreamReader(mem_stream);

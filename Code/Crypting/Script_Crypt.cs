@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.IO.Compression;
 
 namespace L2_login
@@ -46,7 +46,7 @@ namespace L2_login
 
             int key = Globals.Rando.Next(0, 1000000000);
 
-            byte[] enc = AES.EncryptData(data, GetTrueKey(key), key.ToString() + "P8xvDLzPHvNiwVMkS3kPzQStAEDqdTMD", System.Security.Cryptography.PaddingMode.ISO10126);
+            byte[] enc = AES.EncryptData(data, GetTrueKey(key), key.ToString() + "P8xvDLzPHvNiwVMkS3kPzQStAEDqdTMD");
 
             outf.WriteLine("ENCRYPTED " + key.ToString());
             outf.WriteLine(System.Convert.ToBase64String(enc));
@@ -57,7 +57,7 @@ namespace L2_login
         {
             byte[] data = System.Convert.FromBase64String(source);
 
-            byte[] dec = AES.DecryptData(data, GetTrueKey(key), key.ToString() + "P8xvDLzPHvNiwVMkS3kPzQStAEDqdTMD", System.Security.Cryptography.PaddingMode.ISO10126);
+            byte[] dec = AES.DecryptData(data, GetTrueKey(key), key.ToString() + "P8xvDLzPHvNiwVMkS3kPzQStAEDqdTMD");
 
             int d_len = System.BitConverter.ToInt32(dec, 40);
 

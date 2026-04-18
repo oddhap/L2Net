@@ -11,9 +11,21 @@ namespace L2_login
         Fixed = 3,
     }
 
+    public struct Vector4
+    {
+        public float X, Y, Z, W;
+        public Vector4(float x, float y, float z, float w)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+            W = w;
+        }
+    }
+
     public struct Vertex
     {
-        public SlimDX.Vector4 Position;
+        public Vector4 Position;
         public int Color;
         public float Tu;
         public float Tv;
