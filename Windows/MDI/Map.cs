@@ -572,26 +572,31 @@ namespace L2_login
             if (map == null || map.dxTexture == null)
                 return;
 
-            int lx = GetScaledX(map.UpperX);
-            int ly = GetScaledY(map.UpperY);
-            int mx = GetScaledX(map.LowerX);
-            int my = GetScaledY(map.LowerY);
+            float mapUnit = Globals.UNITS;
+            int mapWidth = (int)mapUnit;
+            int mapHeight = (int)mapUnit;
 
-            if ((mx < 0) || (my < 0) || (lx > Width) || (ly > Height))
+            int centerX = xm;
+            int centerY = ym;
+            float playerX = xc;
+            float playerY = yc;
+
+            float blockWorldX = x_block * mapUnit;
+            float blockWorldY = y_block * mapUnit;
+
+            float offsetX = (blockWorldX - playerX) / scale + centerX;
+            float offsetY = (blockWorldY - playerY) / scale + centerY;
+
+            int destX = (int)offsetX;
+            int destY = (int)offsetY;
+            int destW = (int)(mapWidth / scale);
+            int destH = (int)(mapHeight / scale);
+
+            if (destX + destW < 0 || destX > Width || destY + destH < 0 || destY > Height)
                 return;
 
-            int destX = Math.Max(0, lx);
-            int destY = Math.Max(0, ly);
-            int srcX = Math.Max(0, -lx);
-            int srcY = Math.Max(0, -ly);
-            int drawW = Math.Min(mx - lx, Width - lx);
-            int drawH = Math.Min(my - ly, Height - ly);
-
-            if (drawW > 0 && drawH > 0 && srcX < map.dxTexture.Width && srcY < map.dxTexture.Height)
-            {
-                Rectangle srcRect = new Rectangle(srcX, srcY, Math.Min(drawW, map.dxTexture.Width - srcX), Math.Min(drawH, map.dxTexture.Height - srcY));
-                dxGraphics.DrawImage(map.dxTexture, destX, destY, srcRect, GraphicsUnit.Pixel);
-            }
+            Rectangle destRect = new Rectangle(destX, destY, destW, destH);
+            dxGraphics.DrawImage(map.dxTexture, destRect);
         }
 
         private void DrawFilledBox(int x1, int y1, int x2, int y2, Color col)
